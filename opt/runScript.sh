@@ -16,7 +16,7 @@ if [ "$3" == "--raw" ]; then
 fi
 # Delete
 echo "[Nexus Initialize Scripts] Deleting old script"
-curl -X DELETE -u $username:$password "$host/service/rest/v1/script/$name" -H "accept: application/json"
+curl --silent -X DELETE -u $username:$password "$host/service/rest/v1/script/$name" -H "accept: application/json"
 # Add
 echo "[Nexus Initialize Scripts] Uploading the script"
 http \
@@ -29,4 +29,4 @@ http \
     "$content"
 # Run
 echo "[Nexus Initialize Scripts] Running the script"
-curl --fail -X POST -u $username:$password --header "Content-Type: text/plain" "$host/service/rest/v1/script/$name/run"
+curl --silent --fail -X POST -u $username:$password --header "Content-Type: text/plain" "$host/service/rest/v1/script/$name/run"
