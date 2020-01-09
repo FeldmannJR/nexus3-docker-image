@@ -1,3 +1,7 @@
+import org.sonatype.nexus.blobstore.api.BlobStoreManager
+import org.sonatype.nexus.repository.maven.VersionPolicy
+import org.sonatype.nexus.repository.storage.WritePolicy
+
 // Destroy all repositories
 repository.repositoryManager.browse().each {
     repository.repositoryManager.delete(it.getName())
@@ -35,6 +39,3 @@ proxies.each {
 repository.createMavenGroup("maven-public", groupRepos)
 // Create docker hosted
 repository.createDockerHosted("docker", 8123, null);
-
-
-

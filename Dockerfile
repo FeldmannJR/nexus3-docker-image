@@ -1,6 +1,7 @@
 FROM openjdk:8-jdk
 # Based on the image of shifudao
 # https://github.com/shifudao/docker-nexus3/
+LABEL maintainer="feldmannjunior@gmail.com"
 
 ENV NEXUS_VERSION 3.20.1-01
 ENV SONATYPE_DIR /opt/sonatype
@@ -17,6 +18,7 @@ ENV NEXUS_SCRIPT_SEARCH_DIR "/etc/nexus-init.d/"
 RUN apt update && \
     apt install -y \
         openssl \
+        gettext-base \
         httpie && \
     rm -rf /var/lib/apt/lists/*
 
@@ -49,7 +51,7 @@ COPY opt/ /opt/scripts/
 VOLUME ${NEXUS_DATA}
 
 # Example for running a groovy script on first run, just extends the image and copy the file or mount a volume
-# ADD examples/src/main/groovy/createRepositories.groovy /etc/nexus-init.d/
+ADD examples/src/main/groovy/createRepositories.groovy /etc/nexus-init.d/
 
 EXPOSE 8081
 WORKDIR ${NEXUS_HOME}

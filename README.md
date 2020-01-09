@@ -10,6 +10,23 @@ Just copy the .groovy scripts to `/etc/nexus-init.d/` example of instruction in 
 `ADD examples/src/main/groovy/changePassword.groovy /etc/nexus-init.d/`  
 Look at script examples [HERE](examples/src/main/groovy/).
 
+## Using Env Variables in Scripts
+Because the nexus groovy container blocks the import of java.lang.System, i was unable to find a way to access env variable in scripts.  
+To fix this issue i am preprocessing variables in the groovy scripts with the consequence of breaking default groovy string interpolation, you can still use groovy interpolation, but the dollar char must be escaped.  
+### Example  
+```groovy
+// assuming there is a env variable TEST with value of "12345"
+def TEST = "Testing..."
+
+println "${TEST}"
+// Prints 12345
+
+println "\${TEST}"
+// Prints Testing...
+
+println "\\${TEST}"
+// Prints ${TEST} 
+```
 ## Environment Variables
 
 ### `NEXUS_ADMIN_PASSWORD` 
