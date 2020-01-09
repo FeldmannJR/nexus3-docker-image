@@ -47,7 +47,7 @@ COPY opt/ /opt/scripts/
 VOLUME ${NEXUS_DATA}
 
 # Example for running a groovy script on first run, just extends the image and copy the file or mount a volume
-ADD examples/src/main/groovy/changePassword.groovy /etc/nexus-init.d/
+# ADD examples/src/main/groovy/changePassword.groovy /etc/nexus-init.d/
 
 EXPOSE 8081
 WORKDIR ${NEXUS_HOME}

@@ -5,6 +5,10 @@ Image based on openjdk-8 with the focus in automatization
 I was unable to find a way to automatize all the installation without to manually uploading the configuration scripts after the installation.  
 This image runs a process that waits for the repository startup, than upload the scripts found in `/etc/nexus-init.d/` directory.
 
+## How to use
+Just copy the .groovy scripts to `/etc/nexus-init.d/` example of instruction in Dockerfile  
+`ADD examples/src/main/groovy/changePassword.groovy /etc/nexus-init.d/`
+
 ## Default Credentials
 The default username is `admin` and the password is `admin123`, you can alter this with the groovy scripts, look at the [EXAMPLES](examples/src/main/groovy/). 
 
