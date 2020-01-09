@@ -15,7 +15,7 @@ Because the nexus groovy container blocks the import of java.lang.System, i was 
 To fix this issue i am preprocessing variables in the groovy scripts with the consequence of breaking default groovy string interpolation, you can still use groovy interpolation, but the dollar char must be escaped.  
 ### Example  
 ```groovy
-// assuming there is a env variable TEST with value of "12345"
+// assuming there is an env variable TEST with value of "12345"
 def TEST = "Testing..."
 
 println "${TEST}"
