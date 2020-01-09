@@ -1,0 +1,5 @@
+#!/usr/bin/execlineb -P
+background
+{
+    bash /opt/scripts/watcher.sh
+}
