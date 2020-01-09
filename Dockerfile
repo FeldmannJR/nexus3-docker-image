@@ -11,6 +11,7 @@ ENV SONATYPE_WORK ${SONATYPE_DIR}/sonatype-work
 # Disable random password, and set the default(admin123)
 ENV NEXUS_SECURITY_RANDOMPASSWORD true
 ENV NEXUS_ADMIN_PASSWORD "admin123"
+ENV NEXUS_SCRIPT_SEARCH_DIR "/etc/nexus-init.d/"
 
 # Installing httpie
 RUN apt update && \
@@ -48,7 +49,7 @@ COPY opt/ /opt/scripts/
 VOLUME ${NEXUS_DATA}
 
 # Example for running a groovy script on first run, just extends the image and copy the file or mount a volume
-# ADD examples/src/main/groovy/changePassword.groovy /etc/nexus-init.d/
+# ADD examples/src/main/groovy/createRepositories.groovy /etc/nexus-init.d/
 
 EXPOSE 8081
 WORKDIR ${NEXUS_HOME}

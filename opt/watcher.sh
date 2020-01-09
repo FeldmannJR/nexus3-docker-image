@@ -8,7 +8,7 @@ fi
 until $(curl --output /dev/null --silent --head --fail http://localhost:8081/service/rest/v1/status); do
     sleep 1
 done
-echo "[Nexus Initialize Scripts] Nexus Api is now online, scanning for groovy files in /etc/nexus-init.d/"
+echo "[Nexus Initialize Scripts] Nexus Api is now online, scanning for groovy files in ${NEXUS_SCRIPT_SEARCH_DIR}"
 # Load the random password from the file
 password=$(cat ${NEXUS_DATA}/admin.password)
 
@@ -17,7 +17,8 @@ bash /opt/scripts/runScript.sh "security.getSecuritySystem().changePassword(\"ad
 password="${NEXUS_ADMIN_PASSWORD}"
 
 # Find init scripts
-for file in /etc/nexus-init.d/*.groovy
+
+for file in `find ${NEXUS_SCRIPT_SEARCH_DIR} -type f -iname \*.groovy`
 do
     if [[ -f "$file" ]]; then
         echo "[Nexus Initialize Scripts] Running $file"

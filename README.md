@@ -15,6 +15,9 @@ Look at script examples [HERE](examples/src/main/groovy/).
 ### `NEXUS_ADMIN_PASSWORD` 
 The password for the admin user. Default: `admin123` 
 
+### `NEXUS_SCRIPT_SEARCH_DIR` 
+Where the watcher will scan for groovy scripts. Default: `/etc/nexus-init.d` 
+
 ## Persist Data
 All the data is stored in `/nexus-data`, just create a volume.  
 Example: `docker run  -it -p 8081:8081 -v ./nexus_data:/nexus-data feldmannjr/nexus3`

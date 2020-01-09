@@ -1,6 +1,6 @@
 // Destroy all repositories
 repository.repositoryManager.browse().each {
-    repoManager.delete(it.getName())
+    repository.repositoryManager.delete(it.getName())
 }
 
 // Create maven snapshots
