@@ -9,7 +9,8 @@ ENV NEXUS_DATA /nexus-data
 ENV NEXUS_CONTEXT ''
 ENV SONATYPE_WORK ${SONATYPE_DIR}/sonatype-work
 # Disable random password, and set the default(admin123)
-ENV NEXUS_SECURITY_RANDOMPASSWORD false
+ENV NEXUS_SECURITY_RANDOMPASSWORD true
+ENV NEXUS_ADMIN_PASSWORD "admin123"
 
 # Installing httpie
 RUN apt update && \

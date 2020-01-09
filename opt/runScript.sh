@@ -5,10 +5,15 @@ set -e
 
 host=http://localhost:8081
 username=admin
-password=admin123
+
 name="startupScript"
 file=$1
+password="${2}"
 
+content="content=@$file"
+if [ "$3" == "--raw" ]; then
+    content="content=$file"
+fi
 # Delete
 echo "[Nexus Initialize Scripts] Deleting old script"
 curl -X DELETE -u $username:$password "$host/service/rest/v1/script/$name" -H "accept: application/json"
@@ -21,7 +26,7 @@ http \
     POST $host/service/rest/v1/script \
     "name=$name" \
     type=groovy \
-    "content=@$file"
+    "$content"
 # Run
 echo "[Nexus Initialize Scripts] Running the script"
 curl --fail -X POST -u $username:$password --header "Content-Type: text/plain" "$host/service/rest/v1/script/$name/run"

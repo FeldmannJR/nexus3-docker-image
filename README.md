@@ -7,10 +7,13 @@ This image runs a process that waits for the repository startup, than upload the
 
 ## How to use
 Just copy the .groovy scripts to `/etc/nexus-init.d/` example of instruction in Dockerfile  
-`ADD examples/src/main/groovy/changePassword.groovy /etc/nexus-init.d/`
+`ADD examples/src/main/groovy/changePassword.groovy /etc/nexus-init.d/`  
+Look at script examples [HERE](examples/src/main/groovy/).
 
-## Default Credentials
-The default username is `admin` and the password is `admin123`, you can alter this with the groovy scripts, look at the [EXAMPLES](examples/src/main/groovy/). 
+## Environment Variables
+
+### `NEXUS_ADMIN_PASSWORD` 
+The password for the user. Default: `admin123` 
 
 ## Persist Data
 All the data is stored in `/nexus-data`, just create a volume.  
