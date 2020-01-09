@@ -13,7 +13,7 @@ Look at script examples [HERE](examples/src/main/groovy/).
 ## Environment Variables
 
 ### `NEXUS_ADMIN_PASSWORD` 
-The password for the user. Default: `admin123` 
+The password for the admin user. Default: `admin123` 
 
 ## Persist Data
 All the data is stored in `/nexus-data`, just create a volume.  
