@@ -54,5 +54,7 @@ VOLUME ${NEXUS_DATA}
 EXPOSE 8081
 WORKDIR ${NEXUS_HOME}
 
+ENV INSTALL4J_ADD_VM_PARAMS="-Xms1200m -Xmx1200m -XX:MaxDirectMemorySize=2g -Djava.util.prefs.userRoot=${NEXUS_DATA}/javaprefs"
+
 CMD ["/opt/scripts/entrypoint.sh"]
 ENTRYPOINT ["/init"]
